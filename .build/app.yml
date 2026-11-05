@@ -1,0 +1,1 @@
+command: ["uvicorn", "dbsql_monitor.backend.app:app", "--workers", "2"]

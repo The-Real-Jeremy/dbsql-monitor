@@ -1,0 +1,3 @@
+--no-index
+--find-links ./wheels
+dbsql_monitor-0.0.0+20261014085633-py3-none-any.whl
