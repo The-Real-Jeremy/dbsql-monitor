@@ -1,0 +1,69 @@
+# Do's and Don'ts
+- If the apx development servers are started, don't regenerate the OpenAPI client.
+- Prefer running apx related commands via mcp server if it's available.
+- Prefer to add new components via shadcn mcp server if it's available.
+- When using the API calls on the frontend, use error boundaries to handle errors.
+- Run apx dev check command (via CLI) to check for errors in the project code after making changes.
+- If agent has access to native browser tool, use it to verify changes on the frontend. If such tool is not present or is not working, use playwright mcp to automate browser actions (e.g. screenshots, clicks, etc.).
+- **Databricks SDK:** Use the apx MCP tools (`search_databricks_sdk`, `get_method_spec`, `get_model_spec`) to look up Databricks SDK methods and models instead of guessing or hallucinating API signatures.
+
+## Package Management
+- **Frontend:** Always use `bun` (never `npm`)
+- **Python:** Always use `uv` (never `pip`)
+
+## Component Management
+- **Adding components:** When adding a new component via CLI command, always add `--yes` flag to skip confirmation
+- **Component location:** If component was added to a wrong location (e.g. stored into `src/components` instead of `src/dbsql-monitor/ui/components`), move it to the proper folder
+- **Component organization:** Prefer grouping components by functionality rather than by file type (e.g. `src/dbsql-monitor/ui/components/chat/`)
+
+## Project Structure
+Full-stack app: `src/dbsql-monitor/ui/` (React + Vite) and `src/dbsql-monitor/backend/` (FastAPI). Backend serves frontend at `/` and API at `/api`. API client auto-generated via `orval`.
+
+## Models & API
+- **3-model pattern:** `Entity` (DB), `EntityIn` (input), `EntityOut` (output)
+- **API routes must have:** `response_model` and `operation_id` for client generation
+
+## Frontend Rules
+- **Routing:** `@tanstack/react-router` (routes in `src/dbsql-monitor/ui/routes/`)
+- **Data fetching:** Always use `useXSuspense` hooks with `Suspense` and `Skeleton` components
+- **Pattern:** Render static elements immediately, fetch API data with suspense
+- **Components:** Use shadcn/ui, add to `src/dbsql-monitor/ui/components/`
+- **Data access:** Use `selector()` function for clean destructuring (e.g., `const {data: profile} = useProfileSuspense(selector())`)
+
+## Development Commands
+
+**Start dev servers** (backend, frontend, OpenAPI watcher):
+```bash
+uv run apx dev start
+```
+
+**Check status** (shows running servers and ports):
+```bash
+uv run apx dev status
+```
+
+**View logs** (stored in `~/.apx/{app_id}/logs/`):
+```bash
+uv run apx dev logs              # All logs
+uv run apx dev logs --ui         # Frontend only
+uv run apx dev logs --backend    # Backend only
+uv run apx dev tail              # Live stream
+```
+
+**Stop servers:**
+```bash
+uv run apx dev stop
+```
+
+**Build for production:**
+```bash
+uv run apx build
+```
+
+**OpenAPI generation** (auto-runs with `dev start`):
+```bash
+uv run apx openapi               # Generate once
+uv run apx openapi --watch       # Watch mode
+```
+
+**Note:** The OpenAPI watcher runs automatically with `dev start`. Manual generation is rarely needed.

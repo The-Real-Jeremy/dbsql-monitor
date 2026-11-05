@@ -1,0 +1,24 @@
+bundle:
+  name: dbsql-monitor
+
+sync:
+  include:
+    - .build
+
+artifacts:
+  default:
+    build: uv run apx build
+
+resources:
+  apps:
+    dbsql-monitor-app:
+      name: "dbsql-monitor"
+      description: "dbsql-monitor created with apx"
+      source_code_path: ./.build
+      user_api_scopes:
+        - sql
+
+targets:
+  dev:
+    mode: development
+    default: true

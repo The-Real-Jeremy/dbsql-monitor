@@ -1,0 +1,49 @@
+[project]
+name = "dbsql-monitor"
+dynamic = ["version"]
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.119.0",
+    "pydantic-settings>=2.11.0",
+    "uvicorn>=0.37.0",
+    "databricks-sdk>=0.74.0",
+]
+
+[dependency-groups]
+dev = [
+    "apx",
+    "pyright>=1.1.406",
+]
+
+[tool.apx.metadata]
+app-name = "dbsql-monitor"
+app-slug = "dbsql_monitor"
+app-module = "dbsql_monitor.backend.app:app"
+api-prefix = "/api"
+metadata-path = "src/dbsql_monitor/_metadata.py"
+
+[build-system]
+requires = ["hatchling", "uv-dynamic-versioning>=0.7.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+format-jinja = "{{version}}"
+
+[tool.uv.sources]
+apx = { git = "https://github.com/databricks-solutions/apx.git" }
+
+[tool.hatch.build.hooks.version]
+path = "src/dbsql_monitor/_version.py"
+template = '''
+version = "{version}"
+'''
+
+[tool.hatch.build]
+artifacts = ["src/dbsql_monitor/__dist__", "src/dbsql_monitor/_metadata.py"]
+exclude = ["src/dbsql_monitor/ui"]
