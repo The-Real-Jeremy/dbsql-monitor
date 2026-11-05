@@ -3,7 +3,7 @@
 > **Author and attribution:** dbsql-monitor was created by **Zac Davies**
 > ([zacdav-db/dbsql-monitor](https://github.com/zacdav-db/dbsql-monitor)), and is published here with
 > his permission. This copy is based on upstream commit `64df42b`, plus a `catalog.yaml` so it can run
-> as a child app inside the App Catalog. Credit for the app belongs to Zac.
+> as a child app inside the App-ception. Credit for the app belongs to Zac.
 
 ## Install (browser only: no terminal, no CLI, works air-gapped)
 
@@ -17,10 +17,10 @@ Everything the app needs is in this repo: the built app in `.build/` and its 27 
    if you want a different name), then **Run all**.
 4. The last cell prints the **app URL**.
 
-### B) Install as a child of the [App Catalog](https://github.com/The-Real-Jeremy/app-catalog)
-1. Install the App Catalog first (its README, same four steps), so `app-catalog-main/` is in your workspace.
+### B) Install as a child of the [App-ception](https://github.com/The-Real-Jeremy/app-ception)
+1. Install the App-ception first (its README, same four steps), so `app-ception-main/` is in your workspace.
 2. On this GitHub page: **Code → Download ZIP** (`dbsql-monitor-main.zip`).
-3. In Databricks: open **the same folder that holds `app-catalog-main/`** → **⋮ → Import** → drop the `.zip`.
+3. In Databricks: open **the same folder that holds `app-ception-main/`** → **⋮ → Import** → drop the `.zip`.
    It unzips into `dbsql-monitor-main/` next to the catalog.
 4. Open **`dbsql-monitor-main/DEPLOY`**, attach **Serverless**, leave **mode = `child`** (`catalog_folder` is filled in
    for you), then **Run all**. It copies the app into the catalog's `child_apps/dbsql_monitor/`, adds the scopes the app
@@ -108,12 +108,12 @@ databricks bundle deploy -p <your-profile>
 
 <p align="center">Built with ❤️ using <a href="https://github.com/databricks-solutions/apx">apx</a></p>
 
-## 🧩 In the App Catalog, and air-gapped
+## 🧩 In the App-ception, and air-gapped
 
-### As a child of the [App Catalog](https://github.com/The-Real-Jeremy/app-catalog) (CLI alternative)
+### As a child of the [App-ception](https://github.com/The-Real-Jeremy/app-ception) (CLI alternative)
 ```bash
-rsync -a --exclude .git --exclude node_modules dbsql-monitor/ <app-catalog>/child_apps/dbsql_monitor/
-cd <app-catalog> && npm run deploy      # runs this repo's databricks.yml build (needs uv + bun on that machine)
+rsync -a --exclude .git --exclude node_modules dbsql-monitor/ <app-ception>/child_apps/dbsql_monitor/
+cd <app-ception> && npm run deploy      # runs this repo's databricks.yml build (needs uv + bun on that machine)
 ```
 The catalog runs the built `.build/` app under `/apps/dbsql_monitor/` (root mode, because it has a
 client-side router), binds the `sql` user-authorization scope from `databricks.yml`, and takes the

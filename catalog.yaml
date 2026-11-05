@@ -1,4 +1,4 @@
-# Card metadata for running this app as a child of the App Catalog (ignored when deployed standalone).
+# Card metadata for running this app as a child of the App-ception (ignored when deployed standalone).
 title: DBSQL Monitor
 description: Every SQL warehouse in the workspace at a glance — state, size and the last hour of query activity — then per warehouse its running and queued work, slot usage and recent queries. Runs as the signed-in viewer (on-behalf-of, sql scope).
 source: https://github.com/zacdav-db/dbsql-monitor
