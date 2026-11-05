@@ -26,6 +26,7 @@ App-ception was called App Catalog. An older `app-catalog-main/` folder and an `
 4. Open **`dbsql-monitor-main/DEPLOY`**, attach **Serverless**, leave **mode = `child`** (`catalog_folder` is filled in
    for you), then **Run all**. It copies the app into the catalog's `child_apps/dbsql_monitor/`, adds the scopes the app
    needs to the catalog app, and redeploys the catalog. The last cell prints `<catalog URL>/apps/dbsql_monitor/`.
+   If you gave the App-ception app a name other than `app-ception`, set **`catalog_app_name`** to that name first.
 
 **Budget policies:** child mode never creates an app; it redeploys the existing catalog, so a workspace policy
 requirement cannot stop it. For standalone mode in a workspace that requires a budget policy, set the
