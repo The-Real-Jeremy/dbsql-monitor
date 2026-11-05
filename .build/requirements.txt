@@ -1,3 +1,5 @@
 --no-index
 --find-links ./wheels
+# google-auth 2.38 needs no cryptography (4.6 MB), so the package stays under the 10 MB import limit
+google-auth==2.38.0
 dbsql_monitor-0.0.0+20261014085633-py3-none-any.whl

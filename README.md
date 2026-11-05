@@ -7,7 +7,7 @@
 
 ## Install (browser only: no terminal, no CLI, works air-gapped)
 
-Everything the app needs is in this repo: the built app in `.build/` and its 28 Python wheels in `.build/wheels/` (installed with `--no-index`). It uses the `sql` user-authorization scope, which the notebook adds; each viewer approves it once. Two ways to install it; both use the `DEPLOY` notebook.
+Everything the app needs is in this repo: the built app in `.build/` and its 27 Python wheels in `.build/wheels/` (installed with `--no-index`). It uses the `sql` user-authorization scope, which the notebook adds; each viewer approves it once. Two ways to install it; both use the `DEPLOY` notebook.
 
 ### A) Install on its own (a standalone Databricks App)
 1. On this GitHub page: **Code → Download ZIP** (`dbsql-monitor-main.zip`). No need to unzip it.
