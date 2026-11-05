@@ -26,6 +26,11 @@ Everything the app needs is in this repo: the built app in `.build/` and its 28 
    for you), then **Run all**. It copies the app into the catalog's `child_apps/dbsql_monitor/`, adds the scopes the app
    needs to the catalog app, and redeploys the catalog. The last cell prints `<catalog URL>/apps/dbsql_monitor/`.
 
+**Budget policies:** child mode never creates an app; it redeploys the existing catalog, so a workspace policy
+requirement cannot stop it. For standalone mode in a workspace that requires a budget policy, set the
+`budget_policy_id` widget, or create the app in the UI first (pick the policy, add the scopes this app needs), then
+Run all.
+
 To update either way: import the new ZIP and run `DEPLOY` again. The previous copy is kept, never deleted.
 
 ---
